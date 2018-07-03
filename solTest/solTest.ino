@@ -56,7 +56,7 @@ void loop() {
 //    delay(delayMill);
 //    digitalWrite(sValve_2, LOW);
 //    delay(delayMill);
-
+    
     digitalWrite(sValve_3, LOW);
     Serial.print("3 on");
     Serial.println();

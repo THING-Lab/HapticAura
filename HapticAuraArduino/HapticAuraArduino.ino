@@ -6,7 +6,7 @@ int sValve_5 = 4;
 int sValve_6 = 5;
 int sValve_7 = 6;
 int sValve_8 = 7;
-
+int delayMill = 1000;
 
 void setup() {
 
@@ -24,92 +24,94 @@ void setup() {
 
 void loop() {
   if (Serial.available()) {
-    int currentRead = Serial.read();
+    char currentRead = Serial.read();
   
-    if(currentRead == "AH") {
-      digitalWrite(sValve_1, LOW);
-      digitalWrite(sValve_1, HIGH);
-      delay(delayMill);
-      digitalWrite(sValve_1, LOW);
-      delay(delayMill);
+    if(currentRead == 'A') {
+      digitalWrite(sValve_3, LOW);
     }
+
+    if(currentRead == 'B') {
+      digitalWrite(sValve_3, HIGH);
+    }
+
+    
 //    if(currentRead == "AL") {
 //      digitalWrite(sValve_1, LOW);
 //    }
 
-    if(currentRead == "BH") {
-      digitalWrite(sValve_2, LOW);
-      digitalWrite(sValve_2, HIGH);
-      delay(delayMill);
-      digitalWrite(sValve_2, LOW);
-      delay(delayMill);
-    }
-//    if(currentRead == "BL") {
+//    if(currentRead == "BH") {
 //      digitalWrite(sValve_2, LOW);
+//      digitalWrite(sValve_2, HIGH);
+//      delay(delayMill);
+//      digitalWrite(sValve_2, LOW);
+//      delay(delayMill);
 //    }
-
-    if(currentRead == "CH") {
-      digitalWrite(sValve_3, LOW);
-      digitalWrite(sValve_3, HIGH);
-      delay(delayMill);
-      digitalWrite(sValve_3, LOW);
-      delay(delayMill);
-    }
-//    if(currentRead == "CL") {
+////    if(currentRead == "BL") {
+////      digitalWrite(sValve_2, LOW);
+////    }
+//
+//    if(currentRead == "CH") {
 //      digitalWrite(sValve_3, LOW);
+//      digitalWrite(sValve_3, HIGH);
+//      delay(delayMill);
+//      digitalWrite(sValve_3, LOW);
+//      delay(delayMill);
 //    }
-
-    if(currentRead == "DH") {
-      digitalWrite(sValve_4, LOW);
-      digitalWrite(sValve_4, HIGH);
-      delay(delayMill);
-      digitalWrite(sValve_4, LOW);
-      delay(delayMill);
-    }
-//    if(currentRead == "DL") {
+////    if(currentRead == "CL") {
+////      digitalWrite(sValve_3, LOW);
+////    }
+//
+//    if(currentRead == "DH") {
 //      digitalWrite(sValve_4, LOW);
+//      digitalWrite(sValve_4, HIGH);
+//      delay(delayMill);
+//      digitalWrite(sValve_4, LOW);
+//      delay(delayMill);
 //    }
-
-    if(currentRead == "EH") {
-      digitalWrite(sValve_5, LOW);
-      digitalWrite(sValve_5, HIGH);
-      delay(delayMill);
-      digitalWrite(sValve_5, LOW);
-      delay(delayMill);
-    }
-//    if(currentRead == "EL") {
+////    if(currentRead == "DL") {
+////      digitalWrite(sValve_4, LOW);
+////    }
+//
+//    if(currentRead == "EH") {
 //      digitalWrite(sValve_5, LOW);
+//      digitalWrite(sValve_5, HIGH);
+//      delay(delayMill);
+//      digitalWrite(sValve_5, LOW);
+//      delay(delayMill);
 //    }
-
-    if(currentRead == "FH") {
-      digitalWrite(sValve_6, LOW);
-      digitalWrite(sValve_6, HIGH);
-      delay(delayMill);
-      digitalWrite(sValve_6, LOW);
-      delay(delayMill);
-    }
-//    if(currentRead == "FL") {
+////    if(currentRead == "EL") {
+////      digitalWrite(sValve_5, LOW);
+////    }
+//
+//    if(currentRead == "FH") {
 //      digitalWrite(sValve_6, LOW);
+//      digitalWrite(sValve_6, HIGH);
+//      delay(delayMill);
+//      digitalWrite(sValve_6, LOW);
+//      delay(delayMill);
 //    }
-
-    if(currentRead == "GH") {
-      digitalWrite(sValve_7, LOW);
-      digitalWrite(sValve_7, HIGH);
-      delay(delayMill);
-      digitalWrite(sValve_7, LOW);
-      delay(delayMill);
-    }
-//    if(currentRead == "GL") {
+////    if(currentRead == "FL") {
+////      digitalWrite(sValve_6, LOW);
+////    }
+//
+//    if(currentRead == "GH") {
 //      digitalWrite(sValve_7, LOW);
+//      digitalWrite(sValve_7, HIGH);
+//      delay(delayMill);
+//      digitalWrite(sValve_7, LOW);
+//      delay(delayMill);
 //    }
-
-    if(currentRead == "HH") {
-      digitalWrite(sValve_8, LOW);
-      digitalWrite(sValve_8, HIGH);
-      delay(delayMill);
-      digitalWrite(sValve_8, LOW);
-      delay(delayMill);
-    }
+////    if(currentRead == "GL") {
+////      digitalWrite(sValve_7, LOW);
+////    }
+//
+//    if(currentRead == "HH") {
+//      digitalWrite(sValve_8, LOW);
+//      digitalWrite(sValve_8, HIGH);
+//      delay(delayMill);
+//      digitalWrite(sValve_8, LOW);
+//      delay(delayMill);
+//    }
 //    if(currentRead == "HL") {
 //      digitalWrite(sValve_8, LOW);
 //    }
