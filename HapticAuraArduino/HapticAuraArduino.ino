@@ -1,5 +1,5 @@
-int sValve_1 = 0;
-int sValve_2 = 1;
+int sValve_1 = 8;
+int sValve_2 = 9;
 int sValve_3 = 2;
 int sValve_4 = 3;
 int sValve_5 = 4;
@@ -19,102 +19,80 @@ void setup() {
   pinMode(sValve_7, OUTPUT);
   pinMode(sValve_8, OUTPUT);
 
+  digitalWrite(sValve_1, HIGH);
+  digitalWrite(sValve_2, HIGH);
+  digitalWrite(sValve_3, HIGH);
+  digitalWrite(sValve_4, HIGH);
+  digitalWrite(sValve_5, HIGH);
+  digitalWrite(sValve_6, HIGH);
+  digitalWrite(sValve_7, HIGH);
+  digitalWrite(sValve_8, HIGH);
+
+
   Serial.begin(9600);
 }
 
 void loop() {
   if (Serial.available()) {
-    char currentRead = Serial.read();
+    int currentRead = Serial.read();
   
-    if(currentRead == 'A') {
-      digitalWrite(sValve_3, LOW);
+    if(currentRead == 1) {
+      digitalWrite(sValve_1, HIGH);
     }
 
-    if(currentRead == 'B') {
+    if(currentRead == 2) {
+      digitalWrite(sValve_1, LOW);
+    }
+    if(currentRead == 3) {
+      digitalWrite(sValve_2, HIGH);
+    }
+
+    if(currentRead == 4) {
+      digitalWrite(sValve_2, LOW);
+    }
+    if(currentRead == 5) {
       digitalWrite(sValve_3, HIGH);
     }
 
-    
-//    if(currentRead == "AL") {
-//      digitalWrite(sValve_1, LOW);
-//    }
+    if(currentRead == 6) {
+      digitalWrite(sValve_3, LOW);
+    }
+    if(currentRead == 7) {
+      digitalWrite(sValve_4, HIGH);
+    }
 
-//    if(currentRead == "BH") {
-//      digitalWrite(sValve_2, LOW);
-//      digitalWrite(sValve_2, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_2, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "BL") {
-////      digitalWrite(sValve_2, LOW);
-////    }
-//
-//    if(currentRead == "CH") {
-//      digitalWrite(sValve_3, LOW);
-//      digitalWrite(sValve_3, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_3, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "CL") {
-////      digitalWrite(sValve_3, LOW);
-////    }
-//
-//    if(currentRead == "DH") {
-//      digitalWrite(sValve_4, LOW);
-//      digitalWrite(sValve_4, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_4, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "DL") {
-////      digitalWrite(sValve_4, LOW);
-////    }
-//
-//    if(currentRead == "EH") {
-//      digitalWrite(sValve_5, LOW);
-//      digitalWrite(sValve_5, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_5, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "EL") {
-////      digitalWrite(sValve_5, LOW);
-////    }
-//
-//    if(currentRead == "FH") {
-//      digitalWrite(sValve_6, LOW);
-//      digitalWrite(sValve_6, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_6, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "FL") {
-////      digitalWrite(sValve_6, LOW);
-////    }
-//
-//    if(currentRead == "GH") {
-//      digitalWrite(sValve_7, LOW);
-//      digitalWrite(sValve_7, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_7, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "GL") {
-////      digitalWrite(sValve_7, LOW);
-////    }
-//
-//    if(currentRead == "HH") {
-//      digitalWrite(sValve_8, LOW);
-//      digitalWrite(sValve_8, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_8, LOW);
-//      delay(delayMill);
-//    }
-//    if(currentRead == "HL") {
-//      digitalWrite(sValve_8, LOW);
-//    }
+    if(currentRead == 8) {
+      digitalWrite(sValve_4, LOW);
+    }
+    if(currentRead == 9) {
+      digitalWrite(sValve_5, HIGH);
+    }
+
+    if(currentRead == 10) {
+      digitalWrite(sValve_5, LOW);
+    }
+    if(currentRead == 11) {
+      digitalWrite(sValve_6, HIGH);
+    }
+
+    if(currentRead == 12) {
+      digitalWrite(sValve_6, LOW);
+    }
+    if(currentRead == 13) {
+      digitalWrite(sValve_7, HIGH);
+    }
+
+    if(currentRead == 14) {
+      digitalWrite(sValve_7, LOW);
+    }
+    if(currentRead == 15) {
+      digitalWrite(sValve_8, HIGH);
+    }
+
+    if(currentRead == 16) {
+      digitalWrite(sValve_8, LOW);
+    }
+  
   }
 }
 
