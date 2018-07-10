@@ -1,3 +1,5 @@
+const int selectPins[4] = {1, 2, 3, 4}; 
+// S-pins to Arduino pins: S0~1, S1~2, S2~3, S3~4
 int sValve_1 = 0;
 int sValve_2 = 1;
 int sValve_3 = 2;
@@ -7,6 +9,19 @@ int sValve_6 = 5;
 int sValve_7 = 6;
 int sValve_8 = 7;
 int delayMill = 1000;
+
+// The selectMuxPin function sets the S0, S1, and S2 pins to select the give pin
+void selectMuxPin(byte pin)
+{
+  if (pin > 7) return; // Exit if pin is out of scope
+  for (int i=0; i<3; i++)
+  {
+    if (pin & (1<<i))
+      digitalWrite(selectPins[i], HIGH);
+    else
+      digitalWrite(selectPins[i], LOW);
+  }
+}
 
 void setup() {
 
@@ -25,97 +40,58 @@ void setup() {
 void loop() {
   if (Serial.available()) {
     char currentRead = Serial.read();
-  
-    if(currentRead == 'A') {
-      digitalWrite(sValve_3, LOW);
-    }
 
-    if(currentRead == 'B') {
-      digitalWrite(sValve_3, HIGH);
-    }
+    digitalWrite(sValve_1, LOW);
+    digitalWrite(sValve_1, HIGH);
+    delay(delayMill);
+    digitalWrite(sValve_1, LOW);
+    delay(delayMill);
 
-    
-//    if(currentRead == "AL") {
-//      digitalWrite(sValve_1, LOW);
-//    }
+     digitalWrite(sValve_2, LOW);
+    digitalWrite(sValve_2, HIGH);
+    delay(delayMill);
+    digitalWrite(sValve_2, LOW);
+    delay(delayMill);
 
-//    if(currentRead == "BH") {
-//      digitalWrite(sValve_2, LOW);
-//      digitalWrite(sValve_2, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_2, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "BL") {
-////      digitalWrite(sValve_2, LOW);
-////    }
-//
-//    if(currentRead == "CH") {
-//      digitalWrite(sValve_3, LOW);
-//      digitalWrite(sValve_3, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_3, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "CL") {
-////      digitalWrite(sValve_3, LOW);
-////    }
-//
-//    if(currentRead == "DH") {
-//      digitalWrite(sValve_4, LOW);
-//      digitalWrite(sValve_4, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_4, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "DL") {
-////      digitalWrite(sValve_4, LOW);
-////    }
-//
-//    if(currentRead == "EH") {
-//      digitalWrite(sValve_5, LOW);
-//      digitalWrite(sValve_5, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_5, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "EL") {
-////      digitalWrite(sValve_5, LOW);
-////    }
-//
-//    if(currentRead == "FH") {
-//      digitalWrite(sValve_6, LOW);
-//      digitalWrite(sValve_6, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_6, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "FL") {
-////      digitalWrite(sValve_6, LOW);
-////    }
-//
-//    if(currentRead == "GH") {
-//      digitalWrite(sValve_7, LOW);
-//      digitalWrite(sValve_7, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_7, LOW);
-//      delay(delayMill);
-//    }
-////    if(currentRead == "GL") {
-////      digitalWrite(sValve_7, LOW);
-////    }
-//
-//    if(currentRead == "HH") {
-//      digitalWrite(sValve_8, LOW);
-//      digitalWrite(sValve_8, HIGH);
-//      delay(delayMill);
-//      digitalWrite(sValve_8, LOW);
-//      delay(delayMill);
-//    }
-//    if(currentRead == "HL") {
-//      digitalWrite(sValve_8, LOW);
-//    }
+    digitalWrite(sValve_3, LOW);
+    digitalWrite(sValve_3, HIGH);
+    delay(delayMill);
+    digitalWrite(sValve_3, LOW);
+    delay(delayMill);
+
+    digitalWrite(sValve_4, LOW);
+    digitalWrite(sValve_4, HIGH);
+    delay(delayMill);
+    digitalWrite(sValve_4, LOW);
+    delay(delayMill);
+
+    digitalWrite(sValve_5, LOW);
+    digitalWrite(sValve_5, HIGH);
+    delay(delayMill);
+    digitalWrite(sValve_5, LOW);
+    delay(delayMill);
+
+    digitalWrite(sValve_6, LOW);
+    digitalWrite(sValve_6, HIGH);
+    delay(delayMill);
+    digitalWrite(sValve_6, LOW);
+    delay(delayMill);
+
+    digitalWrite(sValve_7, LOW);
+    digitalWrite(sValve_7, HIGH);
+    delay(delayMill);
+    digitalWrite(sValve_7, LOW);
+    delay(delayMill);
+
+    digitalWrite(sValve_8, LOW);
+    digitalWrite(sValve_8, HIGH);
+    delay(delayMill);
+    digitalWrite(sValve_8, LOW);
+    delay(delayMill);
+
+
   }
 }
+
 
 
