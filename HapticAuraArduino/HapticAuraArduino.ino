@@ -1,32 +1,20 @@
-<<<<<<< HEAD
-const int selectPins[4] = {1, 2, 3, 4}; 
-// S-pins to Arduino pins: S0~1, S1~2, S2~3, S3~4
-int sValve_1 = 0;
-int sValve_2 = 1;
-=======
-int sValve_1 = 8;
-int sValve_2 = 9;
->>>>>>> aea6d244ebd19649d2618c7c956c1dd4771737e6
-int sValve_3 = 2;
-int sValve_4 = 3;
-int sValve_5 = 4;
-int sValve_6 = 5;
-int sValve_7 = 6;
-int sValve_8 = 7;
+int sValve_1  = 30;
+int sValve_2  = 31;
+int sValve_3  = 32;
+int sValve_4  = 33;
+int sValve_5  = 34;
+int sValve_6  = 35;
+int sValve_7  = 36;
+int sValve_8  = 37;
+int sValve_9  = 40;
+int sValve_10 = 41;
+int sValve_11 = 42;
+int sValve_12 = 43;
+int sValve_13 = 44;
+int sValve_14 = 45;
+int sValve_15 = 46;
+int sValve_16 = 47;
 int delayMill = 1000;
-
-// The selectMuxPin function sets the S0, S1, and S2 pins to select the give pin
-void selectMuxPin(byte pin)
-{
-  if (pin > 7) return; // Exit if pin is out of scope
-  for (int i=0; i<3; i++)
-  {
-    if (pin & (1<<i))
-      digitalWrite(selectPins[i], HIGH);
-    else
-      digitalWrite(selectPins[i], LOW);
-  }
-}
 
 void setup() {
 
@@ -38,6 +26,14 @@ void setup() {
   pinMode(sValve_6, OUTPUT);
   pinMode(sValve_7, OUTPUT);
   pinMode(sValve_8, OUTPUT);
+  pinMode(sValve_9, OUTPUT);
+  pinMode(sValve_10, OUTPUT);
+  pinMode(sValve_11, OUTPUT);
+  pinMode(sValve_12, OUTPUT);
+  pinMode(sValve_13, OUTPUT);
+  pinMode(sValve_14, OUTPUT);
+  pinMode(sValve_15, OUTPUT);
+  pinMode(sValve_16, OUTPUT);
 
   digitalWrite(sValve_1, HIGH);
   digitalWrite(sValve_2, HIGH);
@@ -47,6 +43,14 @@ void setup() {
   digitalWrite(sValve_6, HIGH);
   digitalWrite(sValve_7, HIGH);
   digitalWrite(sValve_8, HIGH);
+  digitalWrite(sValve_9, HIGH);
+  digitalWrite(sValve_10, HIGH);
+  digitalWrite(sValve_11, HIGH);
+  digitalWrite(sValve_12, HIGH);
+  digitalWrite(sValve_13, HIGH);
+  digitalWrite(sValve_14, HIGH);
+  digitalWrite(sValve_15, HIGH);
+  digitalWrite(sValve_16, HIGH);
 
 
   Serial.begin(9600);
@@ -54,59 +58,6 @@ void setup() {
 
 void loop() {
   if (Serial.available()) {
-<<<<<<< HEAD
-    char currentRead = Serial.read();
-
-    digitalWrite(sValve_1, LOW);
-    digitalWrite(sValve_1, HIGH);
-    delay(delayMill);
-    digitalWrite(sValve_1, LOW);
-    delay(delayMill);
-
-     digitalWrite(sValve_2, LOW);
-    digitalWrite(sValve_2, HIGH);
-    delay(delayMill);
-    digitalWrite(sValve_2, LOW);
-    delay(delayMill);
-
-    digitalWrite(sValve_3, LOW);
-    digitalWrite(sValve_3, HIGH);
-    delay(delayMill);
-    digitalWrite(sValve_3, LOW);
-    delay(delayMill);
-
-    digitalWrite(sValve_4, LOW);
-    digitalWrite(sValve_4, HIGH);
-    delay(delayMill);
-    digitalWrite(sValve_4, LOW);
-    delay(delayMill);
-
-    digitalWrite(sValve_5, LOW);
-    digitalWrite(sValve_5, HIGH);
-    delay(delayMill);
-    digitalWrite(sValve_5, LOW);
-    delay(delayMill);
-
-    digitalWrite(sValve_6, LOW);
-    digitalWrite(sValve_6, HIGH);
-    delay(delayMill);
-    digitalWrite(sValve_6, LOW);
-    delay(delayMill);
-
-    digitalWrite(sValve_7, LOW);
-    digitalWrite(sValve_7, HIGH);
-    delay(delayMill);
-    digitalWrite(sValve_7, LOW);
-    delay(delayMill);
-
-    digitalWrite(sValve_8, LOW);
-    digitalWrite(sValve_8, HIGH);
-    delay(delayMill);
-    digitalWrite(sValve_8, LOW);
-    delay(delayMill);
-
-
-=======
     int currentRead = Serial.read();
   
     if(currentRead == 1) {
@@ -165,10 +116,63 @@ void loop() {
     if(currentRead == 16) {
       digitalWrite(sValve_8, LOW);
     }
-  
->>>>>>> aea6d244ebd19649d2618c7c956c1dd4771737e6
+    if(currentRead == 17) {
+      digitalWrite(sValve_9, HIGH);
+    }
+
+    if(currentRead == 18) {
+      digitalWrite(sValve_9, LOW);
+    }
+    if(currentRead == 19) {
+      digitalWrite(sValve_10, HIGH);
+    }
+
+    if(currentRead == 20) {
+      digitalWrite(sValve_10, LOW);
+    }
+    if(currentRead == 21) {
+      digitalWrite(sValve_11, HIGH);
+    }
+
+    if(currentRead == 22) {
+      digitalWrite(sValve_11, LOW);
+    }
+    if(currentRead == 23) {
+      digitalWrite(sValve_12, HIGH);
+    }
+
+    if(currentRead == 24) {
+      digitalWrite(sValve_12, LOW);
+    }
+    if(currentRead == 25) {
+      digitalWrite(sValve_13, HIGH);
+    }
+
+    if(currentRead == 26) {
+      digitalWrite(sValve_13, LOW);
+    }
+    if(currentRead == 27) {
+      digitalWrite(sValve_14, HIGH);
+    }
+
+    if(currentRead == 28) {
+      digitalWrite(sValve_14, LOW);
+    }
+    if(currentRead == 29) {
+      digitalWrite(sValve_15, HIGH);
+    }
+
+    if(currentRead == 30) {
+      digitalWrite(sValve_15, LOW);
+    }
+    if(currentRead == 31) {
+      digitalWrite(sValve_16, HIGH);
+    }
+
+    if(currentRead == 32) {
+      digitalWrite(sValve_16, LOW);
+    }
   }
 }
-
 
 
