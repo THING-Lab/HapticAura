@@ -14,6 +14,8 @@ int sValve_13 = 44;
 int sValve_14 = 45;
 int sValve_15 = 46;
 int sValve_16 = 47;
+int sValve_17 = 50;
+int sValve_18 = 51;
 int delayMill = 1000;
 
 void setup() {
@@ -34,6 +36,8 @@ void setup() {
   pinMode(sValve_14, OUTPUT);
   pinMode(sValve_15, OUTPUT);
   pinMode(sValve_16, OUTPUT);
+  pinMode(sValve_17, OUTPUT);
+  pinMode(sValve_18, OUTPUT);
 
   digitalWrite(sValve_1, HIGH);
   digitalWrite(sValve_2, HIGH);
@@ -51,6 +55,8 @@ void setup() {
   digitalWrite(sValve_14, HIGH);
   digitalWrite(sValve_15, HIGH);
   digitalWrite(sValve_16, HIGH);
+  digitalWrite(sValve_17, HIGH);
+  digitalWrite(sValve_18, HIGH);
 
 
   Serial.begin(9600);
@@ -171,6 +177,20 @@ void loop() {
 
     if(currentRead == 32) {
       digitalWrite(sValve_16, LOW);
+    }
+    if(currentRead == 33) {
+      digitalWrite(sValve_17, HIGH);
+    }
+
+    if(currentRead == 34) {
+      digitalWrite(sValve_17, LOW);
+    }
+    if(currentRead == 35) {
+      digitalWrite(sValve_18, HIGH);
+    }
+
+    if(currentRead == 36) {
+      digitalWrite(sValve_18, LOW);
     }
   }
 }
