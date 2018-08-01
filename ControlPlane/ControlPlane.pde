@@ -3,7 +3,10 @@ LeapMotion leap;
 
 
 import controlP5.*;//import controlP5 library
-
+Serial SERIAL_PORT;
+int SERIAL_PORT_INDEX = 4; //Check arduino "port" menu and count from the top to the serial port, start from 0.
+int SERIAL_ARRAY_SIZE = 0; //Incremented automatically when a new mechamagnet object is created.
+float[] SERIAL_DATA = {0, 0};
 ControlP5 cp5;
 // Serial Port Output
 import processing.serial.*; // Serial libraries, send OUTPUT through USB
@@ -1660,9 +1663,23 @@ if (key=='8') {
       myPort.write(16);
       h++; 
   println("8H");  
+  println(SERIAL_DATA[0]);
  }
 } 
-  
-  
-  
+    
+}
+
+void readSerial() {
+  if (SERIAL_PORT.available() > 0) {
+    String str =  SERIAL_PORT.readStringUntil('\n');
+    if (str != null) {
+      str = trim(str);
+      String[] readings = str.split(" ");
+      SERIAL_DATA = new float[readings.length];
+      for (int i=0; i<readings.length; i++) {
+        SERIAL_DATA[i] = parseFloat(readings[i]);
+        println(SERIAL_DATA[i]);
+      }
+    }
+  }
 }

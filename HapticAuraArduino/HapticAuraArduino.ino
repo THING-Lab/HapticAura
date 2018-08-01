@@ -1,21 +1,21 @@
 int sValve_1  = 30;
-int sValve_2  = 31;
-int sValve_3  = 32;
-int sValve_4  = 33;
-int sValve_5  = 34;
-int sValve_6  = 35;
-int sValve_7  = 36;
-int sValve_8  = 37;
-int sValve_9  = 40;
-int sValve_10 = 41;
-int sValve_11 = 42;
-int sValve_12 = 43;
-int sValve_13 = 44;
-int sValve_14 = 45;
-int sValve_15 = 46;
-int sValve_16 = 47;
-int sValve_17 = 50;
-int sValve_18 = 51;
+int sValve_2  = 32;
+int sValve_3  = 34;
+int sValve_4  = 36;
+int sValve_5  = 38;
+int sValve_6  = 40;
+int sValve_7  = 42;
+int sValve_8  = 44;
+int sValve_9  = 31;
+int sValve_10 = 33;
+int sValve_11 = 35;
+int sValve_12 = 37;
+int sValve_13 = 39;
+int sValve_14 = 41;
+int sValve_15 = 43;
+int sValve_16 = 45;
+int sValve_17 = 48;
+int sValve_18 = 50;
 int delayMill = 1000;
 
 void setup() {
@@ -63,6 +63,9 @@ void setup() {
 }
 
 void loop() {
+
+    Serial.println("2"); 
+  
   if (Serial.available()) {
     int currentRead = Serial.read();
   
