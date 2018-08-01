@@ -130,7 +130,7 @@ void setup() {
   background(255);
   noStroke();
 
-  myPort = new Serial(this, Serial.list()[SERIAL_PORT_INDEX], 9600);
+  myPort = new Serial(this, Serial.list()[4], 9600);
   button1 = new MMButton("BUTTON 1", 0, false, 0.5, 50, 50, 80, 200); //arguments: name, serial data index, inverted?, trigger threshold (0-1), xpos, ypos, width, height
   button2 = new MMButton("BUTTON 2", 1, false, 0.5, 150, 50, 80, 200);
   knob1 = new MMKnob("KNOB 1", 1, 2, false, 300, 50, 150); //arguments: name, serial data index A, serial data index B, inverted?, xpos, ypos, diameter
@@ -803,7 +803,7 @@ println(volume);
   ellipse(610, 350, 70, 70);
   fill(0);
  
-  if (rightarray[1] ==0) {
+  if (rightarray[1] ==0) {  //check the status of array of right valves to turn on and off
     fill(0);
     ellipse(610, 270, 20, 20);
     myPort.write(17);
@@ -891,7 +891,7 @@ println(volume);
 
 
 
-  if (check4 == 0) {
+  if (check4 == 0) {  
 
 
     rightarray[9] = 1;
@@ -924,12 +924,12 @@ println(volume);
   }
 
 
-  if (check2 == 0) {
+  if (check2 == 0) {  //if check2 is 0, All right valves will be static
 
     for (int v = 1; v < 9; v++)
       rightarray[v] = 0;
   }
-  if (check2 == 1) {
+  if (check2 == 1) { // if check2 is 1, All right valves will do clockwise animation
 
 
     if (millis() - lastTime2 >= timedelay2) {
@@ -961,7 +961,7 @@ println(volume);
   }
 
 
-  if (check2 == 2) {
+  if (check2 == 2) {  // if check2 is 2, All right valves will do counterclockwise animation
 
 
     if (millis() - lastTime2 >= timedelay2) {
@@ -993,7 +993,7 @@ println(volume);
   }  
 
 
-  if (check2 == 3) {
+  if (check2 == 3) {  // if check2 is 3, All right valves will do pulsing animation
 
 
     if (millis() - lastTime2 >= timedelay2) {
@@ -1033,7 +1033,7 @@ println(volume);
       lastTime2= millis();
     }
   }
-  if (check2 == 4) {
+  if (check2 == 4) {// if check2 is 4, All right valves will do left to right animation
 
 
     if (millis() - lastTime2 >= timedelay2) {
@@ -1089,7 +1089,7 @@ println(volume);
       lastTime2= millis();
     }
   }  
-  if (check2 == 5) {
+  if (check2 == 5) {// if check2 is 5, All right valves will do right to left animation
 
 
     if (millis() - lastTime2 >= timedelay2) {
@@ -1145,7 +1145,7 @@ println(volume);
       lastTime2= millis();
     }
   }  
-  if (check2 == 6) {
+  if (check2 == 6) {// if check2 is 6, All right valves will do bottom to top animation
 
 
     if (millis() - lastTime2 >= timedelay2) {
@@ -1204,7 +1204,7 @@ println(volume);
 
 
   if (check2 == 7)
-  {
+  {  // if check2 is 7, All right valves will do top to bottom animation
 
 
     if (millis() - lastTime2 >= timedelay2) {
@@ -1322,7 +1322,7 @@ println(volume);
     }
   }
 }   
-void knobValue(int theValue) {
+void knobValue(int theValue) { 
   count = theValue;
   println("a knob event. setting background to "+theValue);
 }
@@ -1393,7 +1393,7 @@ void controlEvent(ControlEvent theEvent) {
       k = 8;
       l = 8;
     }
-    if (theEvent.getController().getValue()==2.0) {
+    if (theEvent.getController().getValue()==2.0) { //get value from droplist make the check1 to 2 and all other count to be 1
       for (int v = 1; v < 10; v++)
         leftarray[v] = 0;
       i = 1;
@@ -1566,7 +1566,7 @@ void Speed2forCenter(float cc) {
 
   timedelay4 = 1000 - cc * 50;
 }
-
+  // create a function that customize droplist for left or right valves
 void customize1(DropdownList ddl) {
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
@@ -1584,7 +1584,8 @@ void customize1(DropdownList ddl) {
   //ddl.scroll(0);
   ddl.setColorBackground(color(60));
   ddl.setColorActive(color(255, 128));
-} 
+}      
+  // create a function that customize droplist for center valve
 void customize2(DropdownList ddl) {
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
@@ -1599,108 +1600,7 @@ void customize2(DropdownList ddl) {
 }  
 
 
-void keyPressed() {
 
-  if (key=='1') {
-    if ((((a+1)/2) -(a/2)) == 0)
-    {
-      myPort.write(1);
-      a++; 
-      println("1L");
-    } else {
-      myPort.write(2);
-      a++; 
-      println("1H");
-    }
-  } 
-  if (key=='2') {
-    if ((((b+1)/2) -(b/2)) == 0)
-    {
-      myPort.write(3);
-      b++; 
-      println("2L");
-    } else {
-      myPort.write(4);
-      b++;
-      println("2H");
-    }
-  } 
-  if (key=='3') {
-    if ((((c+1)/2) -(c/2)) == 0)
-    {
-      myPort.write(5);
-      c++;  
-      println("3L");
-    } else {
-      myPort.write(6);
-      c++; 
-      println("3H");
-    }
-  } 
-  if (key=='4') {
-    if ((((d+1)/2) -(d/2)) == 0)
-    {
-      myPort.write(7);
-      d++; 
-      println("4L");
-    } else {
-      myPort.write(8);
-      d++; 
-      println("4H");
-    }
-  } 
-  if (key=='5') {
-    if ((((e+1)/2) -(e/2)) == 0)
-    {
-      myPort.write(9);
-      e++; 
-      println("5L");
-    } else {
-      myPort.write(10);
-      e++; 
-      println("5H");
-    }
-  } 
-  if (key=='6') {
-    if ((((f+1)/2) -(f/2)) == 0)
-    {
-      myPort.write(11);
-      f++; 
-      println("6L");
-    } else {
-      myPort.write(12);
-      f++; 
-      println("6H");
-    }
-  } 
-  if (key=='7') {
-    if ((((g+1)/2) -(g/2)) == 0)
-    {
-      myPort.write(13);
-      g++; 
-      println("7L");
-    } else {
-      myPort.write(14);
-      g++; 
-      println("7H");
-    }
-  } 
-
-
-  if (key=='8') {
-    if ((((h+1)/2) -(h/2)) == 0)
-    {
-      myPort.write(15);
-      h++; 
-      println("8L");
-    } else {
-      myPort.write(16);
-      h++; 
-      println("8H");  
-      println(SERIAL_DATA[0]);
-    }
-  }
-}
 void readSerial() {
   if (myPort.available() > 0) {
     String str =  myPort.readStringUntil('\n');
