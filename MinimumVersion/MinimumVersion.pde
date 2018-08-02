@@ -737,322 +737,240 @@ void draw() {
   }  
 
 
- if (check2 == 3) {
-   
-     if (millis() - lastTime2 >= timedelay2) {
+ if (check2 == 3) 
+ {
+     if (millis() - lastTime2 >= timedelay2) 
+     {
+         switch(PulseCount2)
+         {
+             case 0 :
+                 for (int b = 1; b < 5; b++ ) 
+                 {
+                   rightarray[2*b] = 1;
+                 }
+                 PulseCount2++;
+                 break;
       
-         if ( PulseCount2 == 0)
-      {
-        for (int b = 1; b < 5; b++ ) {
-          rightarray[2*b] = 1;
-        }
-        PulseCount2++;
-      } 
-      else  if ( PulseCount2 == 1) {
-
-        for (int b = 1; b < 5; b++ ) {
-          rightarray[2*b] = 0;
-        }
-        PulseCount2++;
-      } 
-      else  if ( PulseCount2 == 2) {
-        for (int b = 1; b < 5; b++ ) {
-          rightarray[2*b-1] = 1;
-        }
-        PulseCount2++;
-      } 
-      else  if ( PulseCount2 == 3) {
-        
-        for (int b = 1; b < 5; b++ ) {
-          rightarray[2*b-1] = 0;
-        }
-        
-        PulseCount2 = 0;
-      
-      }
-      
-      lastTime2= millis();
-    
-   } 
-  
- }
-
- if (check2 == 4) {
-   
-    if (millis() - lastTime2 >= timedelay2) {
-
-      if ( LRCount2 == 0) {
-   
-        rightarray[3] = 0;
-
-        rightarray[7] = 1; 
-
-        LRCount2++;
-      } 
-      else if ( LRCount2 == 1) {
-      
-        rightarray[7] = 0;
-
-        rightarray[6] = 1;
-
-        rightarray[8] = 1;
-
-        LRCount2++;
-      } 
-      else if ( LRCount2 == 2) {
-      
-        rightarray[6] = 0;
-
-        rightarray[8] = 0;
-
-        rightarray[1] = 1;
-
-        rightarray[5] = 1;
-
-        LRCount2++;
-      } 
-      else if ( LRCount2 == 3) {
-      
-        rightarray[1] = 0;
-
-        rightarray[5] = 0;
-
-        rightarray[2] = 1;
-
-        rightarray[4] = 1;
-
-        LRCount2++;
-      } 
-      else if ( LRCount2 == 4) {
-      
-        rightarray[2] = 0;
-
-        rightarray[4] = 0;
-
-        rightarray[3] = 1;
-
-        LRCount2 = 0;
-      }
-      
-      lastTime2= millis();
-
-    }
-  
- } 
-  
- if (check2 == 5) {
-   
-    if (millis() - lastTime2 >= timedelay2) {
-
-      if ( RLCount2 == 0) {
-   
-        rightarray[3] = 1;
-
-        rightarray[7] = 0;
-
-        RLCount2++;
-    
-     } 
-      else if ( RLCount2 == 4) {
-      
-        rightarray[7] = 1;
-
-        rightarray[6] = 0;
-
-        rightarray[8] = 0;
-
-        RLCount2 = 0;
-   
-     } 
-      else if ( RLCount2 == 3) {
-      
-        rightarray[6] = 1;
-
-        rightarray[8] = 1;
-
-        rightarray[1] = 0;
-
-        rightarray[5] = 0;
-
-        RLCount2++;
-    
-     } 
-      else if ( RLCount2 == 2) {
-      
-        rightarray[1] = 1;
-
-        rightarray[5] = 1;
-
-        rightarray[2] = 0;
-
-        rightarray[4] = 0;
-
-        RLCount2++;
-
-     } 
-      else if ( RLCount2 == 1) {
-      
-        rightarray[2] = 1;
-        
-        rightarray[4] = 1;
-
-        rightarray[3] = 0;
-
-        RLCount2++;
-  
-     }
-    
-      lastTime2= millis();
-    
-   }
- 
- }
- 
- if (check2 == 6) {
-   
-    if (millis() - lastTime2 >= timedelay2) {
-
-      if ( BTCount2 == 0) {
-   
-        rightarray[1] = 0;
-
-        rightarray[5] = 1;
-
-        BTCount2++;
-        
-      } 
-      else if ( BTCount2 == 1) {
-        
-        rightarray[5] = 0;
-
-        rightarray[4] = 1;
-
-        rightarray[6] = 1;
-
-        BTCount2++;
-        
-      } 
-      else if ( BTCount2 == 2) {
-      
-        rightarray[4] = 0;
-
-        rightarray[6] = 0;   
-
-        rightarray[3] = 1;
-
-        rightarray[7] = 1;
-
-        BTCount2++;
-      
-      } 
-      else if ( BTCount2 == 3) {
-      
-        rightarray[3] = 0;
-
-        rightarray[7] = 0;
-
-        rightarray[2] = 1;
-
-        rightarray[8] = 1;
-
-        BTCount2++;
-      
-      } 
-      else if ( BTCount2 == 4) {
-      
-        rightarray[2] = 0;
-
-        rightarray[8] = 0;
-
-        rightarray[1] = 1;
-
-        BTCount2 = 0;
-        
-      }
-      
-      lastTime2= millis();
-    
-   }
-  
- } 
-
-
- if (check2 == 7) {
-   
-    if (millis() - lastTime2 >= timedelay2) {
-
-      if ( TBCount2 == 0) {
-   
-        rightarray[1] = 1;
-
-        rightarray[5] = 0;
-
-        TBCount2++;
-        
-      } 
-      else if ( TBCount2 == 4) {
-        
-        rightarray[5] = 1;
-
-        rightarray[4] = 0;
-
-        rightarray[6] = 0;
-
-        TBCount2 = 0;
-        
-      } 
-      else if ( TBCount2 == 3) {
-      
-        rightarray[4] = 1;
-
-        rightarray[6] = 1;
-
-        rightarray[3] = 0;
-
-        rightarray[7] = 0;
-
-        TBCount2++;
-        
-      } 
-      else if ( TBCount2 == 2) {
-      
-        rightarray[3] = 1;
-
-        rightarray[7] = 1;
-
-        rightarray[2] = 0;
-
-        rightarray[8] = 0;
-
-        TBCount2++;
-        
-       } 
-       else if ( TBCount2 == 1) {
+             case 1 : 
+                 for (int b = 1; b < 5; b++ ) 
+                 {
+                   rightarray[2*b] = 0;
+                 }
+                 PulseCount2++;
+                 break;
        
-        rightarray[2] = 1;
+             case 2 :
+                 for (int b = 1; b < 5; b++ ) 
+                 {
+                   rightarray[2*b-1] = 1;
+                 }
+                 PulseCount2++;
+                 break;
+       
+             case 3 : 
+                 for (int b = 1; b < 5; b++ ) 
+                 {
+                   rightarray[2*b-1] = 0;
+                 }
+                 PulseCount2 = 0;
+                 break;
+        }
+       lastTime2= millis();
+     } 
+  }
 
-        rightarray[8] = 1;
-
-        rightarray[1] = 0;
-
-        TBCount2 ++;
-        
+  if (check2 == 4) 
+  {
+      if (millis() - lastTime2 >= timedelay2) 
+      {
+          switch(LRCount2)
+          {
+              case 0 : 
+                  rightarray[3] = 0;
+                  rightarray[7] = 1; 
+                  LRCount2++;
+                  break;
+      
+              case 1 :  
+                  rightarray[7] = 0;          
+                  rightarray[6] = 1;         
+                  rightarray[8] = 1;         
+                  LRCount2++;
+                  break;
+            
+              case 2 :   
+                  rightarray[6] = 0;        
+                  rightarray[8] = 0;          
+                  rightarray[1] = 1;         
+                  rightarray[5] = 1;
+                  LRCount2++;
+                  break;
+                  
+              case 3 :     
+                  rightarray[1] = 0;          
+                  rightarray[5] = 0;          
+                  rightarray[2] = 1;          
+                  rightarray[4] = 1;         
+                  LRCount2++;
+                  break;
+  
+              case 4 :      
+                  rightarray[2] = 0;          
+                  rightarray[4] = 0;          
+                  rightarray[3] = 1;          
+                  LRCount2 = 0;
+                  break;
+          }
+        lastTime2= millis();
       }
-
-      lastTime2= millis();
-
-    }
-
+  } 
+  
+  if (check2 == 5) 
+  { 
+      if (millis() - lastTime2 >= timedelay2) 
+      {
+          switch(RLCount2)
+          {
+              case 0: 
+                  rightarray[3] = 1;      
+                  rightarray[7] = 0;     
+                  RLCount2++;
+                  break;
+              
+              case 1:
+                  rightarray[2] = 1; 
+                  rightarray[4] = 1;          
+                  rightarray[3] = 0;          
+                  RLCount2++;
+                  break;
+                  
+              case 2:
+                  rightarray[1] = 1;
+                  rightarray[5] = 1;
+                  rightarray[2] = 0;
+                  rightarray[4] = 0;
+                  RLCount2++;
+                  break;
+                  
+              case 3:
+                  rightarray[6] = 1;
+                  rightarray[8] = 1; 
+                  rightarray[1] = 0;
+                  rightarray[5] = 0;
+                  RLCount2++;
+                  break;
+             
+              case 4 :
+                  rightarray[7] = 1;          
+                  rightarray[6] = 0;         
+                  rightarray[8] = 0;        
+                  RLCount2 = 0;
+                  break;
+          }
+        lastTime2= millis();
+      }
+  }
+  
+  if (check2 == 6) 
+  { 
+      if (millis() - lastTime2 >= timedelay2) 
+      {
+          switch(BTCount2) 
+          {
+              case 0 :
+                  rightarray[1] = 0;         
+                  rightarray[5] = 1;          
+                  BTCount2++;
+                  break;
+              
+              case 1 :       
+                  rightarray[5] = 0;
+                  rightarray[4] = 1;
+                  rightarray[6] = 1;
+                  BTCount2++;
+                  break;
+        
+              case 2 :      
+                  rightarray[4] = 0;        
+                  rightarray[6] = 0;          
+                  rightarray[3] = 1;         
+                  rightarray[7] = 1;         
+                  BTCount2++;
+                  break;
+      
+              case 3 :      
+                  rightarray[3] = 0;          
+                  rightarray[7] = 0;          
+                  rightarray[2] = 1;         
+                  rightarray[8] = 1;         
+                  BTCount2++;
+                  break; 
+     
+              case 4 :    
+                  rightarray[2] = 0;       
+                  rightarray[8] = 0;       
+                  rightarray[1] = 1;                          
+                  BTCount2 = 0;
+                  break;
+          }
+        lastTime2= millis();
+      }
+  } 
+  
+  if (check2 == 7) 
+  { 
+      if (millis() - lastTime2 >= timedelay2) 
+      {
+          switch(TBCount2) 
+          {
+              case 0 : 
+                  rightarray[1] = 1;          
+                  rightarray[5] = 0;                        
+                  TBCount2++;
+                  break;
+                  
+              case 1 :       
+                  rightarray[2] = 1;          
+                  rightarray[8] = 1;          
+                  rightarray[1] = 0;          
+                  TBCount2 ++;
+                  break;
+                  
+              case 2 :      
+                  rightarray[3] = 1;        
+                  rightarray[7] = 1;          
+                  rightarray[2] = 0;          
+                  rightarray[8] = 0;    
+                  TBCount2++;
+                  break;
+              
+              case 3 :      
+                  rightarray[4] = 1;
+                  rightarray[6] = 1;
+                  rightarray[3] = 0;
+                  rightarray[7] = 0;
+                  TBCount2++;
+                  break;
+              
+              case 4 :                  
+                  rightarray[5] = 1;
+                  rightarray[4] = 0;
+                  rightarray[6] = 0;
+                  TBCount2 = 0;
+                  break;    
+          }        
+        lastTime2= millis();
+      }
   }
   
   if (check4 == 0) 
   {   
-      rightarray[9] = 1;  
+    rightarray[9] = 1;  
   }
  
   if (check4 == 1) 
   {
-      rightarray[9] = 0;
+    rightarray[9] = 0;
   }
   
   if (check4 == 2) 
@@ -1072,9 +990,11 @@ void draw() {
         lastTime4= millis();
       }
   }
+
 } 
 
-void controlEvent(ControlEvent theEvent) {
+void controlEvent(ControlEvent theEvent) 
+{
   // DropdownList is of type ControlGroup.
   // A controlEvent will be triggered from inside the ControlGroup class.
   // therefore you need to check the originator of the Event with
@@ -1082,242 +1002,243 @@ void controlEvent(ControlEvent theEvent) {
   // to avoid an error message thrown by controlP5.
   println("event from controller : "+theEvent.getController().getName() +" from "+theEvent.getController());
   println(theEvent.getController());
-
-  if ( theEvent.getController().getName() == "LeftCenter") {
-    if (theEvent.getController().getValue()==0.0 ) {
-
-      check3 = 0;
-    }
-    if (theEvent.getController().getValue()==1.0 ) {
-
-
-      check3 = 1;
-    }
-    if (theEvent.getController().getValue()==2.0 ) {
-
-      check3 = 2;
-    }
-  } 
-
-  if ( theEvent.getController().getName() == "RightCenter") {
-    if (theEvent.getController().getValue()==0.0 ) {
-
-      check4 = 0;
-    }
-    if (theEvent.getController().getValue()==1.0 ) {
-
-      check4 = 1;
-    }
-    if (theEvent.getController().getValue()==2.0 ) {
-
-
-      check4 = 2;
-    }
-  } 
-
-  if ( theEvent.getController().getName() == "LeftList") {
-    //check = (int)theEvent.getController().getValue();
-    if (theEvent.getController().getValue()==0.0 ) {
-
-      check1 = 0;
-
-      i = 1;
-      j = 1;
-      k = 8;
-      l = 8;
-      for (int v = 1; v < 10; v++)
-        leftarray[v] = 0;
-    }
-
-    if (theEvent.getController().getValue()==1.0) {
-
-      check1 = 1;
-      for (int v = 1; v < 10; v++)
-        leftarray[v] = 0;
-      i = 1;
-      j = 1;
-      k = 8;
-      l = 8;
-    }
-    if (theEvent.getController().getValue()==2.0) {
-      for (int v = 1; v < 10; v++)
-        leftarray[v] = 0;
-      i = 1;
-      j = 1;
-      k = 8;
-      l = 8;
-
-      check1 = 2;
-    }
-    if (theEvent.getController().getValue()==3.0) {
-      for (int v = 1; v < 10; v++)
-        leftarray[v] = 0;
-      i = 1;
-      j = 1;
-      k = 8;
-      l = 8;
-
-      check1 = 3;
-    }  
-    if (theEvent.getController().getValue()==4.0) {
-      for (int v = 1; v < 10; v++)
-        leftarray[v] = 0;
-      i = 1;
-      j = 1;
-      k = 8;
-      l = 8;
-
-      check1 = 4;
-    }
-
-    if (theEvent.getController().getValue()==5.0) {
-      for (int v = 1; v < 10; v++)
-        leftarray[v] = 0;
-      i = 1;
-      j = 1;
-      k = 8;
-      l = 8;
-
-      check1 = 5;
-    }
-    if (theEvent.getController().getValue()==6.0) {
-      for (int v = 1; v < 10; v++)
-        leftarray[v] = 0;
-      i = 1;
-      j = 1;
-      k = 8;
-      l = 8;
-
-      check1 = 6;
-    }
-
-    if (theEvent.getController().getValue()==7.0) {
-      for (int v = 1; v < 10; v++)
-        leftarray[v] = 0;
-      i = 1;
-      j = 1;
-      k = 8;
-      l = 8;
-
-      check1 = 7;
-    }
-  }
-  if ( theEvent.getController().getName() == "RightList") {
-    //check = (int)theEvent.getController().getValue();
-    if (theEvent.getController().getValue()==0.0 ) {
-
-      check2 = 0;
-
-      i2 = 1;
-      j2 = 1;
-      k2 = 8;
-      l2 = 8;
-      for (int v = 1; v < 10; v++)
-        rightarray[v] = 0;
-    }
-
-    if (theEvent.getController().getValue()==1.0) {
-
-      check2 = 1;
-      for (int v = 1; v < 10; v++)
-        rightarray[v] = 0;
-      i2 = 1;
-      j2 = 1;
-      k2 = 8;
-      l2 = 8;
-    }
-    if (theEvent.getController().getValue()==2.0) {
-      for (int v = 1; v < 10; v++)
-        rightarray[v] = 0;
-      i2 = 1;
-      j2 = 1;
-      k2 = 8;
-      l2 = 8;
-
-      check2 = 2;
-    }
-    if (theEvent.getController().getValue()==3.0) {
-      for (int v = 1; v < 10; v++)
-        rightarray[v] = 0;
-      i2 = 1;
-      j2 = 1;
-      k2 = 8;
-      l2 = 8;
-
-      check2 = 3;
-    }  
-    if (theEvent.getController().getValue()==4.0) {
-      for (int v = 1; v < 10; v++)
-        rightarray[v] = 0;
-      i2 = 1;
-      j2 = 1;
-      k2 = 8;
-      l2 = 8;
-
-      check2 = 4;
-    }
-
-    if (theEvent.getController().getValue()==5.0) {
-      for (int v = 1; v < 10; v++)
-        rightarray[v] = 0;
-      i2 = 1;
-      j2 = 1;
-      k2 = 8;
-      l2 = 8;
-
-      check2 = 5;
-    }
-    if (theEvent.getController().getValue()==6.0) {
-      for (int v = 1; v < 10; v++)
-        rightarray[v] = 0;
-      i2 = 1;
-      j2 = 1;
-      k2 = 8;
-      l2 = 8;
-
-      check2 = 6;
-    }
-
-    if (theEvent.getController().getValue()==7.0) {
-      for (int v = 1; v < 10; v++)
-        rightarray[v] = 0;
-      i2 = 1;
-      j2 = 1;
-      k2 = 8;
-      l2 = 8;
-
-      check2 = 7;
-    }
-  }
-}
-
-
-void speed1(float cc) {
-
-  timedelay1 = 1000 - cc * 50;
-
-}
-
-void Speed1forCenter(float cc) {
-
-  timedelay3 = 1000 - cc * 50;
-
-}
-
-void speed2(float cc) {
-
-  timedelay2 = 1000 - cc * 50;
   
+  if ( theEvent.getController().getName() == "LeftCenter") 
+  {
+      switch(int(theEvent.getController().getValue()))
+      {
+          case 0 :
+              check3 = 0;
+              break;
+          
+          case 1 :
+              check3 = 1;
+              break;
+          
+          case 2 :
+              check3 = 2;
+              break;
+      }
+  } 
+  
+  if ( theEvent.getController().getName() == "RightCenter") 
+  {
+      switch(int(theEvent.getController().getValue()))
+      {
+          case 0 :
+              check4 = 0;
+              break;
+          
+          case 1 :
+              check4 = 1;
+              break;
+          
+          case 2 :
+              check4 = 2;
+              break;
+      }     
+  } 
+
+  if ( theEvent.getController().getName() == "LeftList") 
+  {
+      switch(int(theEvent.getController().getValue()))
+      {
+          case 0 :             
+              for (int v = 1; v < 10; v++)
+                leftarray[v] = 0;  
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check1 = 0;            
+              break;
+          
+          case 1 :             
+              for (int v = 1; v < 10; v++)
+                leftarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check1 = 1;
+              break;
+          
+          case 2 :
+              for (int v = 1; v < 10; v++)
+                leftarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check1 = 2;
+              break;
+              
+          case 3 :
+              for (int v = 1; v < 10; v++)
+                leftarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check1 = 3;
+              break;
+          
+          case 4 :
+              for (int v = 1; v < 10; v++)
+                leftarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check1 = 4;           
+              break;
+          
+          case 5 :
+              for (int v = 1; v < 10; v++)
+                leftarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check1 = 5;             
+              break;
+      
+          case 6 :
+              for (int v = 1; v < 10; v++)
+                leftarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check1 = 6;
+              break;
+        
+          case 7 :
+              for (int v = 1; v < 10; v++)
+                leftarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check1 = 7;
+              break;
+      }   
+  }
+  
+  
+  if ( theEvent.getController().getName() == "RightList") 
+  {
+      switch(int(theEvent.getController().getValue()))
+      {
+          case 0 :             
+              for (int v = 1; v < 10; v++)
+                rightarray[v] = 0; 
+              i2 = 1;
+              j2 = 1;
+              k2 = 8;
+              l2 = 8;
+              check2 = 0;
+              break;
+          
+          case 1 :             
+              for (int v = 1; v < 10; v++)
+                rightarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check2 = 1;
+              break;
+          
+          case 2 :
+              for (int v = 1; v < 10; v++)
+                rightarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check2 = 2;
+              break;
+              
+          case 3 :
+              for (int v = 1; v < 10; v++)
+                rightarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check2 = 3;
+              break;
+          
+          case 4 :
+              for (int v = 1; v < 10; v++)
+                rightarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check2 = 4;           
+              break;
+          
+          case 5 :
+              for (int v = 1; v < 10; v++)
+                rightarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check2 = 5;             
+              break;
+      
+          case 6 :
+              for (int v = 1; v < 10; v++)
+                rightarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check2 = 6;
+              break;
+        
+          case 7 :
+              for (int v = 1; v < 10; v++)
+                rightarray[v] = 0;
+              i = 1;
+              j = 1;
+              k = 8;
+              l = 8;
+              check2 = 7;
+              break;
+      }   
+  }
+
+}
+      
+  
+
+
+void speed1(float cc) 
+{
+  timedelay1 = 1000 - cc * 50;
 }
 
-void Speed2forCenter(float cc) {
+void Speed1forCenter(float cc) 
+{
+  timedelay3 = 1000 - cc * 50;
+}
 
+void speed2(float cc) 
+{
+  timedelay2 = 1000 - cc * 50; 
+}
+
+void Speed2forCenter(float cc)
+{
   timedelay4 = 1000 - cc * 50;
-
 }
 
-void customize1(DropdownList ddl) {
- 
+void customize1(DropdownList ddl) 
+{ 
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
   ddl.setItemHeight(20);
@@ -1336,8 +1257,8 @@ void customize1(DropdownList ddl) {
 
 } 
 
-void customize2(DropdownList ddl) {
-
+void customize2(DropdownList ddl) 
+{
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
   ddl.setItemHeight(20);
@@ -1348,5 +1269,4 @@ void customize2(DropdownList ddl) {
   ddl.addItem("Pulsing", 12);
   ddl.setColorBackground(color(60));
   ddl.setColorActive(color(255, 128));
-
 }  
