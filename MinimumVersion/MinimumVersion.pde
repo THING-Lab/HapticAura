@@ -244,311 +244,308 @@ void draw()
     ellipse(190, 350, 20, 20);
     myPort.write(34);  
   } 
- 
-  if (check1 == 0)    //do static 
-  {
-    for (int v = 1; v < 9; v++)
-      leftarray[v] = 0;    
-  }
   
-  if (check1 == 1) //do clockwise animation
-  {   
-      if (millis() - lastTime1 >= timedelay1) 
-      {  
-          if (j>1)
+  switch (check1)//check left animation choice
+  {
+      case 0 : //do static
+          for (int v = 1; v < 9; v++)
+            leftarray[v] = 0;  
+          break;
+      
+      case 1 : //do clockwise animation   
+          if (millis() - lastTime1 >= timedelay1) 
+          {  
+              if (j>1)
+              {   
+                leftarray[j-1] = 0;        
+              }
+              j++;
+              leftarray[i] =1;      
+              i++;
+              if ( i == 9) 
+              {
+                i = 1;
+              }
+              if (j == 10) 
+              {
+                j = 2;
+              }
+            lastTime1= millis();   
+          } 
+          break;
+  
+ 
+      case 2 ://do counterclockwise animation  
+          if (millis() - lastTime1 >= timedelay1) 
+          {  
+              if (l < 8)
+              {
+                leftarray[l+1] = 0;
+              }
+              l--;
+              leftarray[k] =1;
+              k--;
+              if (k == 0) 
+              {
+                k = 8;
+              }
+              if (l == -1) 
+              {
+                l = 7;
+              } 
+            lastTime1= millis();  
+          }
+          break;
+
+      case 3 : //do pulse animation     
+          if (millis() - lastTime1 >= timedelay1) 
           {   
-            leftarray[j-1] = 0;        
+              switch(PulseCount1)
+              {
+                  case 0 :  
+                      for (int b = 1; b < 5; b++ ) 
+                      {
+                        leftarray[2*b] = 1;
+                      } 
+                      PulseCount1++;
+                      break;
+         
+                  case 1 :
+                      for (int b = 1; b < 5; b++ ) 
+                      {
+                        leftarray[2*b] = 0;
+                      }
+                      PulseCount1++;
+                      break;
+                       
+                  case 2 :    
+                      for (int b = 1; b < 5; b++ ) 
+                      {
+                        leftarray[2*b-1] = 1;
+                      }
+                      PulseCount1++;
+                      break;
+                      
+                  case 3 : 
+                      for (int b = 1; b < 5; b++ ) 
+                      {
+                        leftarray[2*b-1] = 0;
+                      }
+                      PulseCount1 = 0;
+                      break;
+              }  
+            lastTime1= millis();  
           }
-          j++;
-          leftarray[i] =1;      
-          i++;
-          if ( i == 9) 
+          break;
+  
+      case 4 : //do left to right animation
+          if (millis() - lastTime1 >= timedelay1) 
           {
-            i = 1;
+              switch(LRCount1)  
+              {
+                  case 0 :  
+                      leftarray[3] = 0;
+                      leftarray[7] = 1; 
+                      LRCount1++;
+                      break;
+                  
+                  case 1 : 
+                      leftarray[7] = 0;
+                      leftarray[6] = 1;
+                      leftarray[8] = 1;
+                      LRCount1++;
+                      break;
+                      
+                  case 2 : 
+                      leftarray[6] = 0;
+                      leftarray[8] = 0;
+                      leftarray[1] = 1;
+                      leftarray[5] = 1;
+                      LRCount1++;
+                      break;
+                  
+                  case 3 :      
+                      leftarray[1] = 0;
+                      leftarray[5] = 0;
+                      leftarray[2] = 1;
+                      leftarray[4] = 1;
+                      LRCount1++;
+                      break;
+                      
+                  case 4 :  
+                      leftarray[2] = 0;
+                      leftarray[4] = 0;
+                      leftarray[3] = 1;
+                      LRCount1 = 0;
+                      break;
+              }
+            lastTime1= millis();
           }
-          if (j == 10) 
+          break;
+          
+      case 5 : //do right to left animation   
+          if (millis() - lastTime1 >= timedelay1) 
           {
-            j = 2;
-          }
-        lastTime1= millis();   
-      } 
-  }
- 
-  if (check1 == 2) //do counterclockwise animation
-  {   
-      if (millis() - lastTime1 >= timedelay1) 
-      {  
-          if (l < 8)
-          {
-            leftarray[l+1] = 0;
-          }
-          l--;
-          leftarray[k] =1;
-          k--;
-          if (k == 0) 
-          {
-            k = 8;
-          }
-          if (l == -1) 
-          {
-            l = 7;
-          } 
-        lastTime1= millis();  
-      }
-  } 
-
-  if (check1 == 3) //do pulse animation
-  {   
-      if (millis() - lastTime1 >= timedelay1) 
-      {   
-          switch(PulseCount1)
-          {
-              case 0 :  
-                  for (int b = 1; b < 5; b++ ) 
-                  {
-                    leftarray[2*b] = 1;
-                  } 
-                  PulseCount1++;
-                  break;
-     
-              case 1 :
-                  for (int b = 1; b < 5; b++ ) 
-                  {
-                    leftarray[2*b] = 0;
-                  }
-                  PulseCount1++;
-                  break;
+              switch (RLCount1)
+              {
+                  case 0 :    
+                      leftarray[3] = 1;
+                      leftarray[7] = 0;
+                      RLCount1++;  
+                      break;
+                  
+                  case 1 :           
+                      leftarray[2] = 1;
+                      leftarray[4] = 1;
+                      leftarray[3] = 0;
+                      RLCount1++;
+                      break;
+                  
+                  case 2 : 
+                      leftarray[1] = 1;
+                      leftarray[5] = 1;
+                      leftarray[2] = 0;
+                      leftarray[4] = 0;
+                      RLCount1++; 
+                      break;   
+                  
+                  case 3 :          
+                      leftarray[6] = 1;
+                      leftarray[8] = 1;
+                      leftarray[1] = 0;
+                      leftarray[5] = 0;
+                      RLCount1++;        
+                      break; 
                    
-              case 2 :    
-                  for (int b = 1; b < 5; b++ ) 
-                  {
-                    leftarray[2*b-1] = 1;
-                  }
-                  PulseCount1++;
-                  break;
-                  
-              case 3 : 
-                  for (int b = 1; b < 5; b++ ) 
-                  {
-                    leftarray[2*b-1] = 0;
-                  }
-                  PulseCount1 = 0;
-                  break;
-          }  
-        lastTime1= millis();  
-      }
-  }
-  
-  if (check1 == 4) //do left to right animation
-  {
-      if (millis() - lastTime1 >= timedelay1) 
-      {
-          switch(LRCount1)  
-          {
-              case 0 :  
-                  leftarray[3] = 0;
-                  leftarray[7] = 1; 
-                  LRCount1++;
-                  break;
-              
-              case 1 : 
-                  leftarray[7] = 0;
-                  leftarray[6] = 1;
-                  leftarray[8] = 1;
-                  LRCount1++;
-                  break;
-                  
-              case 2 : 
-                  leftarray[6] = 0;
-                  leftarray[8] = 0;
-                  leftarray[1] = 1;
-                  leftarray[5] = 1;
-                  LRCount1++;
-                  break;
-              
-              case 3 :      
-                  leftarray[1] = 0;
-                  leftarray[5] = 0;
-                  leftarray[2] = 1;
-                  leftarray[4] = 1;
-                  LRCount1++;
-                  break;
-                  
-              case 4 :  
-                  leftarray[2] = 0;
-                  leftarray[4] = 0;
-                  leftarray[3] = 1;
-                  LRCount1 = 0;
-                  break;
+                   case 4 : 
+                      leftarray[7] = 1;
+                      leftarray[6] = 0;
+                      leftarray[8] = 0;
+                      RLCount1 = 0;      
+                      break;    
+              }        
+            lastTime1= millis(); 
           }
-        lastTime1= millis();
-      }
-  }  
+          break;
+   
   
-  if (check1 == 5) //do right to left animation
-  {   
-      if (millis() - lastTime1 >= timedelay1) 
-      {
-          switch (RLCount1)
+      case 6 : //do bottom to top animation
+          if (millis() - lastTime1 >= timedelay1) 
           {
-              case 0 :    
-                  leftarray[3] = 1;
-                  leftarray[7] = 0;
-                  RLCount1++;  
-                  break;
-              
-              case 1 :           
-                  leftarray[2] = 1;
-                  leftarray[4] = 1;
-                  leftarray[3] = 0;
-                  RLCount1++;
-                  break;
-              
-              case 2 : 
-                  leftarray[1] = 1;
-                  leftarray[5] = 1;
-                  leftarray[2] = 0;
-                  leftarray[4] = 0;
-                  RLCount1++; 
-                  break;   
-              
-              case 3 :          
-                  leftarray[6] = 1;
-                  leftarray[8] = 1;
-                  leftarray[1] = 0;
-                  leftarray[5] = 0;
-                  RLCount1++;        
-                  break; 
-               
-               case 4 : 
-                  leftarray[7] = 1;
-                  leftarray[6] = 0;
-                  leftarray[8] = 0;
-                  RLCount1 = 0;      
-                  break;    
-            }        
-        lastTime1= millis(); 
-      } 
-  }  
-  
-  if (check1 == 6) //do bottom to top animation
-  {
-      if (millis() - lastTime1 >= timedelay1) 
-      {
-          switch (BTCount1)
+              switch (BTCount1)
+              {
+                  case 0 :   
+                      leftarray[1] = 0;
+                      leftarray[5] = 1;
+                      BTCount1++;
+                      break;
+                  
+                  case 1 :
+                      leftarray[5] = 0;
+                      leftarray[4] = 1;
+                      leftarray[6] = 1;
+                      BTCount1++;
+                      break;
+                  
+                  case 2 : 
+                      leftarray[4] = 0;
+                      leftarray[6] = 0;
+                      leftarray[3] = 1;
+                      leftarray[7] = 1;
+                      BTCount1++;    
+                      break;
+                      
+                  case 3 : 
+                      leftarray[3] = 0;
+                      leftarray[7] = 0;
+                      leftarray[2] = 1;
+                      leftarray[8] = 1;
+                      BTCount1++; 
+                      break;
+                      
+                  case 4 : 
+                      leftarray[2] = 0;
+                      leftarray[8] = 0;
+                      leftarray[1] = 1;
+                      BTCount1 = 0;
+                      break;
+              }    
+            lastTime1= millis(); 
+          }
+          break;
+    
+ 
+      case 7 ://do top to bottom animation   
+          if (millis() - lastTime1 >= timedelay1) 
           {
-              case 0 :   
-                  leftarray[1] = 0;
-                  leftarray[5] = 1;
-                  BTCount1++;
-                  break;
-              
-              case 1 :
-                  leftarray[5] = 0;
-                  leftarray[4] = 1;
-                  leftarray[6] = 1;
-                  BTCount1++;
-                  break;
-              
-              case 2 : 
-                  leftarray[4] = 0;
-                  leftarray[6] = 0;
-                  leftarray[3] = 1;
-                  leftarray[7] = 1;
-                  BTCount1++;    
-                  break;
+              switch (TBCount1)
+              { 
+                  case 0 :  
+                      leftarray[1] = 1;
+                      leftarray[5] = 0;
+                      TBCount1++;
+                      break;
+                   
+                  case 1 :      
+                      leftarray[2] = 1;
+                      leftarray[8] = 1;
+                      leftarray[1] = 0;
+                      TBCount1 ++;
+                      break;
+                      
+                  case 2 :   
+                      leftarray[3] = 1;
+                      leftarray[7] = 1;
+                      leftarray[2] = 0;
+                      leftarray[8] = 0;
+                      TBCount1++;
+                      break;
                   
-              case 3 : 
-                  leftarray[3] = 0;
-                  leftarray[7] = 0;
-                  leftarray[2] = 1;
-                  leftarray[8] = 1;
-                  BTCount1++; 
-                  break;
-                  
-              case 4 : 
-                  leftarray[2] = 0;
-                  leftarray[8] = 0;
-                  leftarray[1] = 1;
-                  BTCount1 = 0;
-                  break;
-          }    
-        lastTime1= millis(); 
-      }
-  }  
- 
-  if (check1 == 7) //do top to bottom animation
-  {   
-      if (millis() - lastTime1 >= timedelay1) 
-      {
-          switch (TBCount1)
-          { 
-              case 0 :  
-                  leftarray[1] = 1;
-                  leftarray[5] = 0;
-                  TBCount1++;
-                  break;
-               
-              case 1 :      
-                  leftarray[2] = 1;
-                  leftarray[8] = 1;
-                  leftarray[1] = 0;
-                  TBCount1 ++;
-                  break;
-                  
-              case 2 :   
-                  leftarray[3] = 1;
-                  leftarray[7] = 1;
-                  leftarray[2] = 0;
-                  leftarray[8] = 0;
-                  TBCount1++;
-                  break;
-              
-              case 3 :
-                  leftarray[4] = 1;
-                  leftarray[6] = 1;
-                  leftarray[3] = 0;
-                  leftarray[7] = 0;
-                  TBCount1++;
-                  break;
-                  
-              case 4 :
-                  leftarray[5] = 1;
-                  leftarray[4] = 0;
-                  leftarray[6] = 0;
-                  TBCount1 = 0;
-                  break;           
-          }      
-        lastTime1= millis(); 
-      }
-  }  
-
-  if (check3 == 0) //do left center on all the time
-  {  
-    leftarray[9] = 1;    
-  }  
- 
-  if (check3 == 1) //do left center off all the time
-  {  
-    leftarray[9] = 0;  
+                  case 3 :
+                      leftarray[4] = 1;
+                      leftarray[6] = 1;
+                      leftarray[3] = 0;
+                      leftarray[7] = 0;
+                      TBCount1++;
+                      break;
+                      
+                  case 4 :
+                      leftarray[5] = 1;
+                      leftarray[4] = 0;
+                      leftarray[6] = 0;
+                      TBCount1 = 0;
+                      break;           
+              }      
+            lastTime1= millis(); 
+          }
+          break;
   }
-  
-  if (check3 == 2) //do left center pulse 
-  {  
-      if (millis() - lastTime3 >= timedelay3) 
-      {     
-          if ( LeftCount == 0)
-          {  
-            leftarray[9] = 1;
-            LeftCount++; 
-          } 
-          else 
-          {  
-            leftarray[9] = 0;
-            LeftCount = 0; 
-          }      
-        lastTime3= millis();   
-      }
+  switch(check3)//check left center animation choice
+  {        
+      case 0:  //do left center on all the time  
+          leftarray[9] = 1;    
+          break;
+     
+      case 1: //do left center off all the time 
+          leftarray[9] = 0;  
+          break;
+      
+      case 2 : //do left center pulse  
+          if (millis() - lastTime3 >= timedelay3) 
+          {     
+              if ( LeftCount == 0)
+              {  
+                leftarray[9] = 1;
+                LeftCount++; 
+              } 
+              else 
+              {  
+                leftarray[9] = 0;
+                LeftCount = 0; 
+              }      
+            lastTime3= millis();   
+          }
+          break;   
   }
   
   fill(123, 123, 213);
@@ -675,313 +672,308 @@ void draw()
     myPort.write(32);
   }  
 
-  if (check2 == 0)  //do right static
+  switch (check2) 
   {
-    for (int v = 1; v < 9; v++)
-      rightarray[v] = 0; 
-  }
+      case 0 : //do right static
+          for (int v = 1; v < 9; v++)
+            rightarray[v] = 0; 
+          break;
   
-  if (check2 == 1) //do clockwise animation
-  {
-      if (millis() - lastTime2 >= timedelay2) 
-      {     
-          if (j2>1) 
-          {
-            rightarray[j2-1] = 0;
+      case 1 : //do clockwise animation
+          if (millis() - lastTime2 >= timedelay2) 
+          {     
+              if (j2>1) 
+              {
+                rightarray[j2-1] = 0;
+              }
+              j2++;
+              rightarray[i2] =1;
+              i2++;
+              if (i2 == 9) 
+              {
+                i2 = 1;
+              }        
+              if (j2 == 10) 
+              {
+                j2 = 2;
+              }
+            lastTime2= millis();
           }
-          j2++;
-          rightarray[i2] =1;
-          i2++;
-          if (i2 == 9) 
-          {
-            i2 = 1;
-          }        
-          if (j2 == 10) 
-          {
-            j2 = 2;
-          }
-        lastTime2= millis();
-      }
-  }
+          break;
   
-  if (check2 == 2) //do counterclockwise animation
-  { 
-      if (millis() - lastTime2 >= timedelay2) 
-      {
-          if (l2 < 8) 
+      case 2 : //do counterclockwise animation
+          if (millis() - lastTime2 >= timedelay2) 
           {
-            rightarray[l2+1] = 0;
+              if (l2 < 8) 
+              {
+                rightarray[l2+1] = 0;
+              }
+              l2--;
+              rightarray[k2] =1;
+              k2--;
+              if ( k2 == 0) 
+              {
+                k2 = 8;
+              }
+              if (l2 == -1) 
+              {
+                l2 = 7;
+              }
+            lastTime2= millis();
           }
-          l2--;
-          rightarray[k2] =1;
-          k2--;
-          if ( k2 == 0) 
-          {
-            k2 = 8;
-          }
-          if (l2 == -1) 
-          {
-            l2 = 7;
-          }
-        lastTime2= millis();
-      }
-  }  
-
- if (check2 == 3) //do pulse
- {
-     if (millis() - lastTime2 >= timedelay2) 
-     {
-         switch(PulseCount2)
-         {
-             case 0 :
-                 for (int b = 1; b < 5; b++ ) 
-                 {
-                   rightarray[2*b] = 1;
-                 }
-                 PulseCount2++;
-                 break;
-      
-             case 1 : 
-                 for (int b = 1; b < 5; b++ ) 
-                 {
-                   rightarray[2*b] = 0;
-                 }
-                 PulseCount2++;
-                 break;
-       
-             case 2 :
-                 for (int b = 1; b < 5; b++ ) 
-                 {
-                   rightarray[2*b-1] = 1;
-                 }
-                 PulseCount2++;
-                 break;
-       
-             case 3 : 
-                 for (int b = 1; b < 5; b++ ) 
-                 {
-                   rightarray[2*b-1] = 0;
-                 }
-                 PulseCount2 = 0;
-                 break;
-        }
-       lastTime2= millis();
-     } 
-  }
-
-  if (check2 == 4) //do left to right
-  {
-      if (millis() - lastTime2 >= timedelay2) 
-      {
-          switch(LRCount2)
-          {
-              case 0 : 
-                  rightarray[3] = 0;
-                  rightarray[7] = 1; 
-                  LRCount2++;
-                  break;
-      
-              case 1 :  
-                  rightarray[7] = 0;          
-                  rightarray[6] = 1;         
-                  rightarray[8] = 1;         
-                  LRCount2++;
-                  break;
+          break;
+  
+       case 3 : //do pulse
+           if (millis() - lastTime2 >= timedelay2) 
+           {
+               switch(PulseCount2)
+               {
+                   case 0 :
+                       for (int b = 1; b < 5; b++ ) 
+                       {
+                         rightarray[2*b] = 1;
+                       }
+                       PulseCount2++;
+                       break;
             
-              case 2 :   
-                  rightarray[6] = 0;        
-                  rightarray[8] = 0;          
-                  rightarray[1] = 1;         
-                  rightarray[5] = 1;
-                  LRCount2++;
-                  break;
-                  
-              case 3 :     
-                  rightarray[1] = 0;          
-                  rightarray[5] = 0;          
-                  rightarray[2] = 1;          
-                  rightarray[4] = 1;         
-                  LRCount2++;
-                  break;
-  
-              case 4 :      
-                  rightarray[2] = 0;          
-                  rightarray[4] = 0;          
-                  rightarray[3] = 1;          
-                  LRCount2 = 0;
-                  break;
-          }
-        lastTime2= millis();
-      }
-  } 
-  
-  if (check2 == 5) //do right to left
-  { 
-      if (millis() - lastTime2 >= timedelay2) 
-      {
-          switch(RLCount2)
-          {
-              case 0: 
-                  rightarray[3] = 1;      
-                  rightarray[7] = 0;     
-                  RLCount2++;
-                  break;
-              
-              case 1:
-                  rightarray[2] = 1; 
-                  rightarray[4] = 1;          
-                  rightarray[3] = 0;          
-                  RLCount2++;
-                  break;
-                  
-              case 2:
-                  rightarray[1] = 1;
-                  rightarray[5] = 1;
-                  rightarray[2] = 0;
-                  rightarray[4] = 0;
-                  RLCount2++;
-                  break;
-                  
-              case 3:
-                  rightarray[6] = 1;
-                  rightarray[8] = 1; 
-                  rightarray[1] = 0;
-                  rightarray[5] = 0;
-                  RLCount2++;
-                  break;
+                   case 1 : 
+                       for (int b = 1; b < 5; b++ ) 
+                       {
+                         rightarray[2*b] = 0;
+                       }
+                       PulseCount2++;
+                       break;
              
-              case 4 :
-                  rightarray[7] = 1;          
-                  rightarray[6] = 0;         
-                  rightarray[8] = 0;        
-                  RLCount2 = 0;
-                  break;
-          }
-        lastTime2= millis();
-      }
-  }
-  
-  if (check2 == 6) //do bottom to top
-  { 
-      if (millis() - lastTime2 >= timedelay2) 
-      {
-          switch(BTCount2) 
-          {
-              case 0 :
-                  rightarray[1] = 0;         
-                  rightarray[5] = 1;          
-                  BTCount2++;
-                  break;
-              
-              case 1 :       
-                  rightarray[5] = 0;
-                  rightarray[4] = 1;
-                  rightarray[6] = 1;
-                  BTCount2++;
-                  break;
+                   case 2 :
+                       for (int b = 1; b < 5; b++ ) 
+                       {
+                         rightarray[2*b-1] = 1;
+                       }
+                       PulseCount2++;
+                       break;
+             
+                   case 3 : 
+                       for (int b = 1; b < 5; b++ ) 
+                       {
+                         rightarray[2*b-1] = 0;
+                       }
+                       PulseCount2 = 0;
+                       break;
+              }
+             lastTime2= millis();
+           }
+           break;
+               
+       case 4 : //do left to right
+           if (millis() - lastTime2 >= timedelay2) 
+           {
+               switch(LRCount2)
+               {
+                   case 0 : 
+                       rightarray[3] = 0;
+                       rightarray[7] = 1; 
+                       LRCount2++;
+                       break;
+           
+                   case 1 :  
+                       rightarray[7] = 0;          
+                       rightarray[6] = 1;         
+                       rightarray[8] = 1;         
+                       LRCount2++;
+                       break;
+                  
+                   case 2 :   
+                       rightarray[6] = 0;        
+                       rightarray[8] = 0;          
+                       rightarray[1] = 1;         
+                       rightarray[5] = 1;
+                       LRCount2++;
+                       break;
+                        
+                   case 3 :     
+                       rightarray[1] = 0;          
+                       rightarray[5] = 0;          
+                       rightarray[2] = 1;          
+                       rightarray[4] = 1;         
+                       LRCount2++;
+                       break;
         
-              case 2 :      
-                  rightarray[4] = 0;        
-                  rightarray[6] = 0;          
-                  rightarray[3] = 1;         
-                  rightarray[7] = 1;         
-                  BTCount2++;
-                  break;
-      
-              case 3 :      
-                  rightarray[3] = 0;          
-                  rightarray[7] = 0;          
-                  rightarray[2] = 1;         
-                  rightarray[8] = 1;         
-                  BTCount2++;
-                  break; 
-     
-              case 4 :    
-                  rightarray[2] = 0;       
-                  rightarray[8] = 0;       
-                  rightarray[1] = 1;                          
-                  BTCount2 = 0;
-                  break;
+                   case 4 :      
+                       rightarray[2] = 0;          
+                       rightarray[4] = 0;          
+                       rightarray[3] = 1;          
+                       LRCount2 = 0;
+                       break;
+                }
+              lastTime2= millis();
           }
-        lastTime2= millis();
-      }
-  } 
-  
-  if (check2 == 7) //do top to bottom
-  { 
-      if (millis() - lastTime2 >= timedelay2) 
-      {
-          switch(TBCount2) 
+          break;
+          
+      case 5 : //do right to left 
+          if (millis() - lastTime2 >= timedelay2) 
           {
-              case 0 : 
-                  rightarray[1] = 1;          
-                  rightarray[5] = 0;                        
-                  TBCount2++;
-                  break;
+              switch (RLCount2)
+              {
+                  case 0: 
+                      rightarray[3] = 1;      
+                      rightarray[7] = 0;     
+                      RLCount2++;
+                      break;
                   
-              case 1 :       
-                  rightarray[2] = 1;          
-                  rightarray[8] = 1;          
-                  rightarray[1] = 0;          
-                  TBCount2 ++;
-                  break;
-                  
-              case 2 :      
-                  rightarray[3] = 1;        
-                  rightarray[7] = 1;          
-                  rightarray[2] = 0;          
-                  rightarray[8] = 0;    
-                  TBCount2++;
-                  break;
-              
-              case 3 :      
-                  rightarray[4] = 1;
-                  rightarray[6] = 1;
-                  rightarray[3] = 0;
-                  rightarray[7] = 0;
-                  TBCount2++;
-                  break;
-              
-              case 4 :                  
-                  rightarray[5] = 1;
-                  rightarray[4] = 0;
-                  rightarray[6] = 0;
-                  TBCount2 = 0;
-                  break;    
-          }        
-        lastTime2= millis();
-      }
-  }
+                  case 1:
+                      rightarray[2] = 1; 
+                      rightarray[4] = 1;          
+                      rightarray[3] = 0;          
+                      RLCount2++;
+                      break;
+                      
+                  case 2:
+                      rightarray[1] = 1;
+                      rightarray[5] = 1;
+                      rightarray[2] = 0;
+                      rightarray[4] = 0;
+                      RLCount2++;
+                      break;
+                      
+                  case 3:
+                      rightarray[6] = 1;
+                      rightarray[8] = 1; 
+                      rightarray[1] = 0;
+                      rightarray[5] = 0;
+                      RLCount2++;
+                      break;
+                 
+                  case 4 :
+                      rightarray[7] = 1;          
+                      rightarray[6] = 0;         
+                      rightarray[8] = 0;        
+                      RLCount2 = 0;
+                      break;
+              }
+            lastTime2= millis();
+          }
+          break;
   
-  if (check4 == 0) 
-  {   
-    rightarray[9] = 1;  
-  }
+      case 6 : //do bottom to top
+          if (millis() - lastTime2 >= timedelay2) 
+          {
+              switch (BTCount2) 
+              {
+                  case 0 :
+                      rightarray[1] = 0;         
+                      rightarray[5] = 1;          
+                      BTCount2++;
+                      break;
+                  
+                  case 1 :       
+                      rightarray[5] = 0;
+                      rightarray[4] = 1;
+                      rightarray[6] = 1;
+                      BTCount2++;
+                      break;
+            
+                  case 2 :      
+                      rightarray[4] = 0;        
+                      rightarray[6] = 0;          
+                      rightarray[3] = 1;         
+                      rightarray[7] = 1;         
+                      BTCount2++;
+                      break;
+          
+                  case 3 :      
+                      rightarray[3] = 0;          
+                      rightarray[7] = 0;          
+                      rightarray[2] = 1;         
+                      rightarray[8] = 1;         
+                      BTCount2++;
+                      break; 
+         
+                  case 4 :    
+                      rightarray[2] = 0;       
+                      rightarray[8] = 0;       
+                      rightarray[1] = 1;                          
+                      BTCount2 = 0;
+                      break;
+              }
+            lastTime2= millis();
+          }
+          break;
  
-  if (check4 == 1) 
-  {
-    rightarray[9] = 0;
+      case 7 : //do top to bottom
+          if (millis() - lastTime2 >= timedelay2) 
+          {
+              switch (TBCount2) 
+              {
+                  case 0 : 
+                      rightarray[1] = 1;          
+                      rightarray[5] = 0;                        
+                      TBCount2++;
+                      break;
+                      
+                  case 1 :       
+                      rightarray[2] = 1;          
+                      rightarray[8] = 1;          
+                      rightarray[1] = 0;          
+                      TBCount2 ++;
+                      break;
+                      
+                  case 2 :      
+                      rightarray[3] = 1;        
+                      rightarray[7] = 1;          
+                      rightarray[2] = 0;          
+                      rightarray[8] = 0;    
+                      TBCount2++;
+                      break;
+                  
+                  case 3 :      
+                      rightarray[4] = 1;
+                      rightarray[6] = 1;
+                      rightarray[3] = 0;
+                      rightarray[7] = 0;
+                      TBCount2++;
+                      break;
+                  
+                  case 4 :                  
+                      rightarray[5] = 1;
+                      rightarray[4] = 0;
+                      rightarray[6] = 0;
+                      TBCount2 = 0;
+                      break;    
+              }        
+            lastTime2= millis();
+          }
+          break;
   }
   
-  if (check4 == 2) 
-  {
-      if (millis() - lastTime4 >= timedelay4) 
-      {
-          if ( RightCount == 0)
+  switch (check4) //control the right center animation
+  { 
+      case 0 :  
+          rightarray[9] = 1;  
+          break;
+ 
+      case 1: 
+          rightarray[9] = 0;
+          break;
+          
+      case 2: 
+          if (millis() - lastTime4 >= timedelay4) 
           {
-            rightarray[9] = 1;
-            RightCount++;
+              if ( RightCount == 0)
+              {
+                rightarray[9] = 1;
+                RightCount++;
+              }
+              else
+              {
+                rightarray[9] = 0;
+                RightCount = 0;
+              }
+            lastTime4= millis();
           }
-          else
-          {
-            rightarray[9] = 0;
-            RightCount = 0;
-          }
-        lastTime4= millis();
-      }
+          break;
   }
 
-} 
+}
 
 void controlEvent(ControlEvent theEvent) 
 {
@@ -995,7 +987,7 @@ void controlEvent(ControlEvent theEvent)
   
   if ( theEvent.getController().getName() == "LeftCenter") 
   {
-      switch(int(theEvent.getController().getValue()))
+      switch (int(theEvent.getController().getValue()))
       {
           case 0 :
               check3 = 0;
@@ -1013,7 +1005,7 @@ void controlEvent(ControlEvent theEvent)
   
   if ( theEvent.getController().getName() == "RightCenter") 
   {
-      switch(int(theEvent.getController().getValue()))
+      switch (int(theEvent.getController().getValue()))
       {
           case 0 :
               check4 = 0;
@@ -1031,7 +1023,7 @@ void controlEvent(ControlEvent theEvent)
 
   if ( theEvent.getController().getName() == "LeftList") 
   {
-      switch(int(theEvent.getController().getValue()))
+      switch (int(theEvent.getController().getValue()))
       {
           case 0 :             
               for (int v = 1; v < 10; v++)
@@ -1118,7 +1110,7 @@ void controlEvent(ControlEvent theEvent)
   
   if ( theEvent.getController().getName() == "RightList") 
   {
-      switch(int(theEvent.getController().getValue()))
+      switch (int(theEvent.getController().getValue()))
       {
           case 0 :             
               for (int v = 1; v < 10; v++)
