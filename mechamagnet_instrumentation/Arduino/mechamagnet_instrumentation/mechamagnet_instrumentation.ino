@@ -21,6 +21,6 @@ void loop() {
   Serial.print(knob_val_B); //knob sensor B reading at index 2;
   Serial.println();
 
-  delay(25);
+  delay(250);
 
 }

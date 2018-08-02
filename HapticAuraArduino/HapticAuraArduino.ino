@@ -39,24 +39,24 @@ void setup() {
   pinMode(sValve_17, OUTPUT);
   pinMode(sValve_18, OUTPUT);
 
-  digitalWrite(sValve_1, HIGH);
-  digitalWrite(sValve_2, HIGH);
-  digitalWrite(sValve_3, HIGH);
-  digitalWrite(sValve_4, HIGH);
-  digitalWrite(sValve_5, HIGH);
-  digitalWrite(sValve_6, HIGH);
-  digitalWrite(sValve_7, HIGH);
-  digitalWrite(sValve_8, HIGH);
-  digitalWrite(sValve_9, HIGH);
-  digitalWrite(sValve_10, HIGH);
-  digitalWrite(sValve_11, HIGH);
-  digitalWrite(sValve_12, HIGH);
-  digitalWrite(sValve_13, HIGH);
-  digitalWrite(sValve_14, HIGH);
-  digitalWrite(sValve_15, HIGH);
-  digitalWrite(sValve_16, HIGH);
-  digitalWrite(sValve_17, HIGH);
-  digitalWrite(sValve_18, HIGH);
+  digitalWrite(sValve_1, LOW);
+  digitalWrite(sValve_2, LOW);
+  digitalWrite(sValve_3, LOW);
+  digitalWrite(sValve_4, LOW);
+  digitalWrite(sValve_5, LOW);
+  digitalWrite(sValve_6, LOW);
+  digitalWrite(sValve_7, LOW);
+  digitalWrite(sValve_8, LOW);
+  digitalWrite(sValve_9, LOW);
+  digitalWrite(sValve_10, LOW);
+  digitalWrite(sValve_11, LOW);
+  digitalWrite(sValve_12, LOW);
+  digitalWrite(sValve_13, LOW);
+  digitalWrite(sValve_14, LOW);
+  digitalWrite(sValve_15, LOW);
+  digitalWrite(sValve_16, LOW);
+  digitalWrite(sValve_17, LOW);
+  digitalWrite(sValve_18, LOW);
 
 
   Serial.begin(9600);
