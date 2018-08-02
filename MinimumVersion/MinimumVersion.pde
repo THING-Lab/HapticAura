@@ -1,29 +1,8 @@
-import de.voidplus.leapmotion.*;
-LeapMotion leap;
-
-
 import controlP5.*;//import controlP5 library
-
 ControlP5 cp5;
 // Serial Port Output
 import processing.serial.*; // Serial libraries, send OUTPUT through USB
 Serial myPort;
-int ledPin;
-int checkPin;
-int check1 = 0;
-int check2 = 0;
-int check3 = 1;
-int check4 = 1;
-int count;
-int i = 1;
-int j = 1;
-int k = 8;
-int l = 8;
-int i2 = 1;
-int j2 = 1;
-int k2 = 8;
-int l2 = 8;
-float color1;
 int a = 0;
 int b = 0;
 int c = 0;
@@ -32,35 +11,47 @@ int e = 0;
 int f = 0;
 int g = 0;
 int h = 0;
+int i = 1;
+int j = 1;
+int k = 8;
+int l = 8;
+int i2 = 1;
+int j2 = 1;
+int k2 = 8;
+int l2 = 8;
+int check1 = 0;
+int check2 = 0;
+int check3 = 1;
+int check4 = 1;
 int LRCount1 = 0;
 int RLCount1 = 0;
 int BTCount1 = 0;
 int TBCount1 = 0;
-int PulseCount1 = 0;
 int LRCount2 = 0;
 int RLCount2 = 0;
 int BTCount2 = 0;
 int TBCount2 = 0;
-int PulseCount2 = 0;
-int LeftCount = 0;
-int RightCount = 0;
-DropdownList d1;
-DropdownList d2;
-DropdownList d3;
-DropdownList d4;
-float timedelay1 = 100;
-float timedelay2 = 100;
-float timedelay3 = 100;
-float timedelay4 = 100;
 int lastTime1 = 0;
 int lastTime2 = 0;
 int lastTime3 = 0;
 int lastTime4 = 0;
-int[] leftarray = new int[10];
+int LeftCount  = 0;
+int RightCount = 0;
+int PulseCount1 = 0;
+int PulseCount2 = 0;
+int[] leftarray  = new int[10];
 int[] rightarray = new int[10];
+float timedelay1 = 100;
+float timedelay2 = 100;
+float timedelay3 = 100;
+float timedelay4 = 100;
+DropdownList d1;
+DropdownList d2;
+DropdownList d3;
+DropdownList d4;
 
-void setup() {
-  
+void setup() 
+{ 
   size(800, 500);
   smooth();
   background(255);
@@ -128,8 +119,8 @@ void setup() {
   
 }
 
-void draw() {
-  
+void draw() 
+{  
   background(222, 200, 255);
   stroke(0);
   fill(123, 123, 213);
@@ -137,7 +128,7 @@ void draw() {
   fill(150);
   ellipse(190, 350, 70, 70);
   
-  if (leftarray[1] == 0) 
+  if (leftarray[1] == 0)     //check the status of light on left circle if 0 is on or 1 is off. The light status is related to valves
   { 
     fill(0);
     ellipse(190, 270, 20, 20);
@@ -254,13 +245,13 @@ void draw() {
     myPort.write(34);  
   } 
  
-  if (check1 == 0) 
+  if (check1 == 0)    //do static 
   {
     for (int v = 1; v < 9; v++)
       leftarray[v] = 0;    
   }
   
-  if (check1 == 1) 
+  if (check1 == 1) //do clockwise animation
   {   
       if (millis() - lastTime1 >= timedelay1) 
       {  
@@ -283,7 +274,7 @@ void draw() {
       } 
   }
  
-  if (check1 == 2) 
+  if (check1 == 2) //do counterclockwise animation
   {   
       if (millis() - lastTime1 >= timedelay1) 
       {  
@@ -306,7 +297,7 @@ void draw() {
       }
   } 
 
-  if (check1 == 3) 
+  if (check1 == 3) //do pulse animation
   {   
       if (millis() - lastTime1 >= timedelay1) 
       {   
@@ -348,7 +339,7 @@ void draw() {
       }
   }
   
-  if (check1 == 4) 
+  if (check1 == 4) //do left to right animation
   {
       if (millis() - lastTime1 >= timedelay1) 
       {
@@ -394,7 +385,7 @@ void draw() {
       }
   }  
   
-  if (check1 == 5) 
+  if (check1 == 5) //do right to left animation
   {   
       if (millis() - lastTime1 >= timedelay1) 
       {
@@ -440,7 +431,7 @@ void draw() {
       } 
   }  
   
-  if (check1 == 6) 
+  if (check1 == 6) //do bottom to top animation
   {
       if (millis() - lastTime1 >= timedelay1) 
       {
@@ -486,7 +477,7 @@ void draw() {
       }
   }  
  
-  if (check1 == 7) 
+  if (check1 == 7) //do top to bottom animation
   {   
       if (millis() - lastTime1 >= timedelay1) 
       {
@@ -532,17 +523,17 @@ void draw() {
       }
   }  
 
-  if (check3 == 0) 
+  if (check3 == 0) //do left center on all the time
   {  
     leftarray[9] = 1;    
   }  
  
-  if (check3 == 1) 
+  if (check3 == 1) //do left center off all the time
   {  
     leftarray[9] = 0;  
   }
   
-  if (check3 == 2) 
+  if (check3 == 2) //do left center pulse 
   {  
       if (millis() - lastTime3 >= timedelay3) 
       {     
@@ -566,7 +557,7 @@ void draw() {
   ellipse(610, 350, 70, 70);
   fill(0);
   
-  if (rightarray[1] == 0) 
+  if (rightarray[1] == 0) //check the right light status
   { 
     fill(0); 
     ellipse(610, 270, 20, 20);
@@ -684,13 +675,13 @@ void draw() {
     myPort.write(32);
   }  
 
-  if (check2 == 0) 
+  if (check2 == 0)  //do right static
   {
     for (int v = 1; v < 9; v++)
       rightarray[v] = 0; 
   }
   
-  if (check2 == 1) 
+  if (check2 == 1) //do clockwise animation
   {
       if (millis() - lastTime2 >= timedelay2) 
       {     
@@ -713,7 +704,7 @@ void draw() {
       }
   }
   
-  if (check2 == 2) 
+  if (check2 == 2) //do counterclockwise animation
   { 
       if (millis() - lastTime2 >= timedelay2) 
       {
@@ -736,8 +727,7 @@ void draw() {
       }
   }  
 
-
- if (check2 == 3) 
+ if (check2 == 3) //do pulse
  {
      if (millis() - lastTime2 >= timedelay2) 
      {
@@ -779,7 +769,7 @@ void draw() {
      } 
   }
 
-  if (check2 == 4) 
+  if (check2 == 4) //do left to right
   {
       if (millis() - lastTime2 >= timedelay2) 
       {
@@ -825,7 +815,7 @@ void draw() {
       }
   } 
   
-  if (check2 == 5) 
+  if (check2 == 5) //do right to left
   { 
       if (millis() - lastTime2 >= timedelay2) 
       {
@@ -871,7 +861,7 @@ void draw() {
       }
   }
   
-  if (check2 == 6) 
+  if (check2 == 6) //do bottom to top
   { 
       if (millis() - lastTime2 >= timedelay2) 
       {
@@ -917,7 +907,7 @@ void draw() {
       }
   } 
   
-  if (check2 == 7) 
+  if (check2 == 7) //do top to bottom
   { 
       if (millis() - lastTime2 >= timedelay2) 
       {
@@ -1216,7 +1206,7 @@ void controlEvent(ControlEvent theEvent)
       
   
 
-
+//adjust all the speed related to timedelay 
 void speed1(float cc) 
 {
   timedelay1 = 1000 - cc * 50;
